@@ -4,7 +4,7 @@ export class Game {
     constructor() {
         this.#status = "PENDING"
     }
-    start(){
+    async start(){
         this.#status = "IN-PROGRESS"
     }
 

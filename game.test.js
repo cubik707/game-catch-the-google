@@ -6,5 +6,12 @@ describe("Game", () => {
         let status = await game.getStatus()
         expect(status).toBe("PENDING")
     })
+
+    it("should return In-progress status after start", async () => {
+        const game = new Game();
+        await game.start()
+        let status = await game.getStatus()
+        expect(status).toBe("IN-PROGRESS")
+    })
 })
 
