@@ -2,8 +2,9 @@ export class Game {
     #status;
     #googlePosition;
     #settings;
+    #numberUtility;
 
-    constructor() {
+    constructor(numberUtils) {
         this.#status = "PENDING"
         this.#settings = {
             gridSize: {
@@ -12,6 +13,7 @@ export class Game {
             },
             jumpInterval: 10
         }
+        this.#numberUtility = numberUtils;
     }
     async start(){
         this.#status = "IN-PROGRESS"
@@ -19,6 +21,11 @@ export class Game {
         setTimeout(()=>{
             this.#status = "LOSE"
         }, 3000)
+
+        this.#googlePosition = {
+            x: await this.#numberUtility.getRandomNumber(0, this.#settings.gridSize.columnsCount - 1),
+            y: await this.#numberUtility.getRandomNumber(0, this.#settings.gridSize.rowsCount - 1),
+        };
     }
 
     async getStatus(){

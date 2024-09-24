@@ -1,10 +1,13 @@
 import {Game} from "./game";
+import {NumberUtility} from "./utils/number-utility.js";
+
 
 describe("Game", () => {
     let game;
 
     beforeEach(()=>{
-        game = new Game()
+        const numberUtility = new NumberUtility()
+        game = new Game(numberUtility)
     })
 
     it("should return Pending status as initial", async () => {
@@ -25,9 +28,12 @@ describe("Game", () => {
                 columnsCount: 4 // x
             }
         })
-
         await game.start()
-        let googlePosition = await game.getGooglePosition()
+        let googlePosition  = await game.getGooglePosition()
+        let googlePosition2  = await game.getGooglePosition()
+
+        expect(googlePosition).toEqual(googlePosition2)
+
         expect(googlePosition.x).toBeGreaterThanOrEqual(0)
         expect(googlePosition.x).toBeLessThanOrEqual(3)
 
