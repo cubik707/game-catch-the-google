@@ -1,5 +1,9 @@
 export class Game {
     #status;
+
+    constructor() {
+        this.#status = "PENDING"
+    }
     start(){
         this.#status = "IN-PROGRESS"
     }
