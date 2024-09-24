@@ -17,5 +17,14 @@ describe("Game", () => {
         let status = await game.getStatus()
         expect(status).toBe("IN-PROGRESS")
     })
+
+    it("should lose after 3 seconds", async () => {
+        await game.start()
+        await delay(3000)
+        let status = await game.getStatus()
+        expect(status).toBe("LOSE")
+    })
 })
+
+const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms))
 
