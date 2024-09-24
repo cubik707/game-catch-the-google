@@ -1,5 +1,6 @@
 export class Game {
     #status;
+    #googlePosition;
 
     constructor() {
         this.#status = "PENDING"
@@ -14,5 +15,9 @@ export class Game {
 
     async getStatus(){
         return this.#status
+    }
+
+    async getGooglePosition(){
+        return this.#googlePosition;
     }
 }
