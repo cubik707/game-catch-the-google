@@ -6,6 +6,10 @@ export class Game {
     }
     async start(){
         this.#status = "IN-PROGRESS"
+
+        setTimeout(()=>{
+            this.#status = "LOSE"
+        }, 3000)
     }
 
     async getStatus(){
