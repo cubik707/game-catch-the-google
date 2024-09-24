@@ -7,8 +7,8 @@ export class Game {
         this.#status = "PENDING"
         this.#settings = {
             gridSize: {
-                columnsCount: 1,
-                rowsCount: 2
+                columnsCount: 3,
+                rowsCount: 3
             },
             jumpInterval: 10
         }

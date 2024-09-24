@@ -18,11 +18,21 @@ describe("Game", () => {
         expect(status).toBe("IN-PROGRESS")
     })
 
-    it("should lose after 3 seconds", async () => {
+    it("google should have random correct position after start", async () => {
+        await game.setSettings({
+            gridSize: {
+                rowsCount: 3,
+                columnsCount: 4 // x
+            }
+        })
+
         await game.start()
-        await delay(3000)
-        let status = await game.getStatus()
-        expect(status).toBe("LOSE")
+        let googlePosition = await game.getGooglePosition()
+        expect(googlePosition.x).toBeGreaterThanOrEqual(0)
+        expect(googlePosition.x).toBeLessThanOrEqual(3)
+
+        expect(googlePosition.y).toBeGreaterThanOrEqual(0)
+        expect(googlePosition.y).toBeLessThanOrEqual(2)
     })
 })
 
