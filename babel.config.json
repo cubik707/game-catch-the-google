@@ -1,0 +1,17 @@
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "node": "current"
+        }
+      }
+    ]
+  ],
+  "sourceMaps": "inline"
+}
+
+
+
+// browser/nodejs  - JS -> TS ///         IDE // old JS <-- modern JS/TypeScript   source.map
