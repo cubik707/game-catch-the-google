@@ -29,7 +29,7 @@ describe('game', () => {
             const prevGooglePosition = game.googlePosition;
             await delay(1) // await -> webAPI/browser 10 // after 10 ms: macrotasks: [jump, await]
             const currentGooglePosition = game.googlePosition;
-            expect(prevGooglePosition).not.toEqual(currentGooglePosition)
+            expect(prevGooglePosition.equals(currentGooglePosition)).toBe(false);
         }
     })
 })

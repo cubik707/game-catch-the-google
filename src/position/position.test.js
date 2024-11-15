@@ -1,4 +1,4 @@
-import { Position } from './Position';
+import { Position } from './position.js';
 
 
 describe("Position class", () => {

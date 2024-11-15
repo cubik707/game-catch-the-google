@@ -1,5 +1,6 @@
 import {GameStatuses} from "./GAME_STATUSES.js";
-import {SamuraiNumberUtility} from "./samurai-number-utility.js";
+import {SamuraiNumberUtility} from "./utils/samurai-number-utility.js";
+import {Position} from "./position/position.js";
 
 export class Game {
     #settings = {
@@ -49,11 +50,11 @@ export class Game {
         }, this.#settings.googleJumpInterval)
     }
     #jumpGoogle() {
-        const newPosition = {
-            x: this.#numberUtility.getRandomInteger(0, this.#settings.gridSize.columnsCount),
-            y: this.#numberUtility.getRandomInteger(0, this.#settings.gridSize.rowsCount)
-        }
-        if (newPosition.x === this.googlePosition?.x && newPosition.y === this.googlePosition?.y){
+        const newPosition = new Position(
+            this.#numberUtility.getRandomInteger(0, this.#settings.gridSize.columnsCount),
+            this.#numberUtility.getRandomInteger(0, this.#settings.gridSize.rowsCount)
+        );
+        if (this.#googlePosition && this.#googlePosition.equals(newPosition)){
             this.#jumpGoogle()
             return;
         }
